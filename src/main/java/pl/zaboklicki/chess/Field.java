@@ -6,7 +6,22 @@ package pl.zaboklicki.chess;
 public class Field {
 
     private Piece piece;
-    private FieldState state;
+    private FieldState state = FieldState.FREE;
+
+    private Field() {
+    }
+
+    public static Field createField(Piece piece) {
+        Field field = new Field();
+
+        return field;
+    }
+
+    public static Field createTakingField() {
+        Field field = new Field();
+        field.state = FieldState.TAKING;
+        return field;
+    }
 
     public Piece getPiece() {
         return piece;
