@@ -1,4 +1,4 @@
-package pl.zaboklicki.chess;
+package pl.zaboklicki.chess.model;
 
 /**
  * Created by zabian on 18.03.2015.
@@ -13,7 +13,8 @@ public class Field {
 
     public static Field createField(Piece piece) {
         Field field = new Field();
-
+        field.piece = piece;
+        field.state = FieldState.BUSY;
         return field;
     }
 
