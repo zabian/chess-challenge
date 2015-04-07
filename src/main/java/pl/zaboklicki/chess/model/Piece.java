@@ -26,7 +26,10 @@ public enum Piece {
     }
 
     public void take(Board board, int row, int col) {
-//        board.setField(row, col, Field.createField(this));
         takingStrategy.take(board, row, col);
+    }
+
+    public boolean isTaking(Coordinates pieceCoordinates, Coordinates coordinatesToCheck) {
+        return takingStrategy.isTaking(pieceCoordinates, coordinatesToCheck);
     }
 }

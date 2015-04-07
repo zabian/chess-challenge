@@ -46,6 +46,17 @@ public abstract class AbstractTakingStrategyTest {
         }
     }
 
+    @Test
+    public void testTakingCheck() {
+        final Coordinates pieceCoordinates = Coordinates.create(2, 2);
+        for (Coordinates coordinatesToCheck : getTakingCoordinates()) {
+            assertThat(takingStrategy.isTaking(pieceCoordinates, coordinatesToCheck)).isTrue();
+        }
+        for (Coordinates coordinatesToCheck : getFreeCoordinates()) {
+            assertThat(takingStrategy.isTaking(pieceCoordinates, coordinatesToCheck)).isFalse();
+        }
+    }
+
     public abstract TakingStrategy getTakingStrategy();
     public abstract Coordinates[] getTakingCoordinates();
     public abstract Coordinates[] getFreeCoordinates();

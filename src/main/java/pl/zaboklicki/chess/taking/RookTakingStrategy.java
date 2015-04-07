@@ -1,14 +1,14 @@
 package pl.zaboklicki.chess.taking;
 
 import pl.zaboklicki.chess.model.Board;
+import pl.zaboklicki.chess.model.Coordinates;
 import pl.zaboklicki.chess.model.Field;
 
 /**
  * Created by zabian on 26.03.15.
  */
-public class RookTakingStrategy extends TakingStrategy {
+public class RookTakingStrategy implements TakingStrategy {
 
-    @Override
     public void take(Board gameBoard, int i, int j) {
         for (int k = 0; k < gameBoard.getRows(); k++) {
             if (k == i) {
@@ -22,5 +22,10 @@ public class RookTakingStrategy extends TakingStrategy {
             }
             gameBoard.setField(i, k, Field.createTakingField());
         }
+    }
+
+    public boolean isTaking(Coordinates pieceCoordinates, Coordinates coordinatesToCheck) {
+        return coordinatesToCheck.getRow() == pieceCoordinates.getRow()
+                || coordinatesToCheck.getCol() == pieceCoordinates.getCol();
     }
 }

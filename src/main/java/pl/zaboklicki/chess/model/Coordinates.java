@@ -26,6 +26,25 @@ public class Coordinates {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Coordinates)) return false;
+
+        Coordinates that = (Coordinates) o;
+
+        if (row != that.row) return false;
+        return col == that.col;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = row;
+        result = 31 * result + col;
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Coordinates{" +
                 "row=" + row +

@@ -1,12 +1,13 @@
 package pl.zaboklicki.chess.taking;
 
 import pl.zaboklicki.chess.model.Board;
+import pl.zaboklicki.chess.model.Coordinates;
 import pl.zaboklicki.chess.model.Field;
 
 /**
  * Created by zabian on 18.03.2015.
  */
-public class QueenTakingStrategy extends TakingStrategy {
+public class QueenTakingStrategy implements TakingStrategy {
 
     public void take(Board gameBoard, int i, int j) {
         for (int k = 0; k < gameBoard.getRows(); k++) {
@@ -30,14 +31,13 @@ public class QueenTakingStrategy extends TakingStrategy {
         }
     }
 
-    public boolean isTaking(int queenrow, int queencol, int row, int col) {
-        if (row == queenrow || col == queencol) {
+    public boolean isTaking(Coordinates pieceCoordinates, Coordinates coordinatesToCheck) {
+        if (coordinatesToCheck.getRow() == pieceCoordinates.getRow()
+                || coordinatesToCheck.getCol() == pieceCoordinates.getCol()) {
             return true;
         }
-        if (Math.abs(row - queenrow) == Math.abs(col - queencol)) {
-            return true;
-        }
-        return false;
+        return Math.abs(coordinatesToCheck.getRow() - pieceCoordinates.getRow())
+                == Math.abs(coordinatesToCheck.getCol() - pieceCoordinates.getCol());
     }
 
 }

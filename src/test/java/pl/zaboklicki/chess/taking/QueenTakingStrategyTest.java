@@ -1,9 +1,6 @@
 package pl.zaboklicki.chess.taking;
 
-import pl.zaboklicki.chess.model.Board;
 import pl.zaboklicki.chess.model.Coordinates;
-import pl.zaboklicki.chess.model.Field;
-import pl.zaboklicki.chess.model.FieldState;
 
 public class QueenTakingStrategyTest extends AbstractTakingStrategyTest {
 
